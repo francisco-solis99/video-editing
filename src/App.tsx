@@ -2,7 +2,6 @@ import { lazy, Suspense } from 'react';
 import { Header } from '@/components/Header'
 import { Routes, Route } from 'react-router';
 import Loader from '@/components/Loader';
-import './App.css'
 
 const VideoUploadPage = lazy(() => import('@/pages/VideoUpload'));
 const VideoProcessPage = lazy(() => import('@/pages/VideoProcess'));

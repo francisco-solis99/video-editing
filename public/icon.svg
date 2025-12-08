@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" aria-labelledby="title desc" role="img">
+  <title id="title">Video editing icon</title>
+  <desc id="desc">Stylized film strip with a play button and scissors representing video editing</desc>
+
+  <!-- Background rounded square -->
+  <rect x="16" y="16" width="480" height="480" rx="48" ry="48" fill="#0f172a"/>
+
+  <!-- Film strip base -->
+  <rect x="48" y="96" width="416" height="192" rx="12" ry="12" fill="#0b1220" stroke="#14213d" stroke-width="2"/>
+
+  <!-- Film sprockets (left) -->
+  <g fill="#e6eef8">
+    <rect x="56" y="112" width="16" height="24" rx="4"/>
+    <rect x="56" y="152" width="16" height="24" rx="4"/>
+    <rect x="56" y="192" width="16" height="24" rx="4"/>
+  </g>
+
+  <!-- Film sprockets (right) -->
+  <g fill="#e6eef8">
+    <rect x="440" y="112" width="16" height="24" rx="4"/>
+    <rect x="440" y="152" width="16" height="24" rx="4"/>
+    <rect x="440" y="192" width="16" height="24" rx="4"/>
+  </g>
+
+  <!-- Video frame (inner) -->
+  <rect x="96" y="120" width="240" height="144" rx="6" ry="6" fill="#081126" stroke="#1b2a44" stroke-width="1.5"/>
+
+  <!-- Play button inside frame -->
+  <polygon points="160,160 210,192 160,224" fill="#6ee7b7"/>
+
+  <!-- Timeline / clip to the right -->
+  <g transform="translate(96,0)">
+    <rect x="360" y="130" width="72" height="48" rx="6" ry="6" fill="#0b1220" stroke="#14213d" stroke-width="2"/>
+    <rect x="368" y="138" width="56" height="8" rx="4" ry="4" fill="#94f9c5"/>
+    <rect x="368" y="152" width="56" height="8" rx="4" ry="4" fill="#5ee0a6"/>
+  </g>
+
+  <!-- Scissors overlay (symbolic editing) -->
+  <g transform="translate(220,220) rotate(-30)">
+    <path d="M-2 0 C -2 14 26 14 26 0 C 26 -14 -2 -14 -2 0 Z" fill="#e6eef8" opacity="0.95"/>
+    <circle cx="10" cy="0" r="6.5" fill="#0b1220"/>
+    <line x1="30" y1="4" x2="70" y2="44" stroke="#e6eef8" stroke-width="6" stroke-linecap="round"/>
+    <line x1="30" y1="-4" x2="70" y2="-44" stroke="#e6eef8" stroke-width="6" stroke-linecap="round"/>
+  </g>
+
+  <!-- Decorative horizontal trim -->
+  <rect x="48" y="304" width="416" height="20" rx="10" ry="10" fill="#081126" opacity="0.9"/>
+
+  <!-- Small HUD controls (bottom-left) -->
+  <g transform="translate(86,320)">
+    <rect x="0" y="0" width="32" height="16" rx="4" fill="#6ee7b7"/>
+    <rect x="44" y="0" width="24" height="16" rx="4" fill="#94f9c5"/>
+    <rect x="76" y="0" width="88" height="16" rx="4" fill="#5ee0a6"/>
+  </g>
+
+  <!-- Outline and subtle glow -->
+  <rect x="16" y="16" width="480" height="480" rx="48" ry="48" fill="none" stroke="#0ea5a4" stroke-opacity="0.06" stroke-width="6"/>
+
+  <!-- Accessibility: hidden title already provided -->
+</svg>
