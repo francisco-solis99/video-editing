@@ -4,7 +4,7 @@
 
 // Maximum file size in MB (set to 100 MB as a reasonable limit for Vercel serverless functions)
 // You can adjust this based on your Vercel plan and processing time limits
-export const MAX_VIDEO_SIZE_MB = 100;
+export const MAX_VIDEO_SIZE_MB = 50;
 export const MAX_VIDEO_SIZE_BYTES = MAX_VIDEO_SIZE_MB * 1024 * 1024;
 
 export const ALLOWED_VIDEO_TYPES = ['video/mp4', 'video/quicktime', 'video/x-msvideo'];
