@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Header } from '@/components/Header'
+import { Toaster } from '@/components/ui/sonner'
 import { Routes, Route } from 'react-router';
 import Loader from '@/components/Loader';
 
@@ -19,6 +20,7 @@ function App() {
           <Route path="/video-result" element={<VideoResultPage />} />
         </Routes>
       </Suspense>
+      <Toaster />
     </>
   )
 }
