@@ -1,7 +1,8 @@
 import { useRef, useState } from "react"
 import { cn } from "@/lib/utils"
 import { Button } from "./ui/button"
-
+import { validateVideoFile, MAX_VIDEO_SIZE_MB } from "@/lib/validation"
+import { toast } from 'sonner'
 
 export default function UploadControl({ setOriginalVideo }: { setOriginalVideo: (file: File | null) => void }) {
   const [isDragging, setIsDragging] = useState(false)
@@ -12,12 +13,30 @@ export default function UploadControl({ setOriginalVideo }: { setOriginalVideo: 
     fileInputRef.current?.click()
   }
 
-  const handleFileSelect = (files: FileList) => {
-    const file = files[0]
-    if (!file) return;
+  const handleFileSelect = (files: FileList | null) => {
+    const file = files?.[0]
+    if (!file) {
+      // ensure input is cleared so selecting the same file later will trigger change
+      if (fileInputRef.current) fileInputRef.current.value = ''
+      return
+    }
     console.log({ file })
 
+    // Validate file
+    const validation = validateVideoFile(file)
+    console.log('validated');
+    if (!validation.isValid) {
+      console.log('is not valid')
+      toast.error(validation.error || 'Error desconocido')
+      // clear the input value so the same invalid file selection triggers change again
+      if (fileInputRef.current) fileInputRef.current.value = ''
+      return
+    }
+    console.log('is valid')
+
     setOriginalVideo(file)
+    // clear input so selecting the same file later will still fire an onChange
+    if (fileInputRef.current) fileInputRef.current.value = ''
   }
 
   const handleDragOver = (e: React.DragEvent) => {
@@ -69,7 +88,7 @@ export default function UploadControl({ setOriginalVideo }: { setOriginalVideo: 
 
         <h2 className="mb-3 text-3xl font-bold text-foreground">Sube tu video para empezar</h2>
         <p className="mb-8 text-center text-muted-foreground">Arrastra y suelta un archivo de video aquí</p>
-        <input type="file" accept="video/*,audio/mpeg,.mp3" onChange={(e) => handleFileSelect(e.target.files!)} ref={fileInputRef} className="hidden" />
+        <input type="file" accept="video/*" onChange={(e) => handleFileSelect(e.target.files!)} ref={fileInputRef} className="hidden" />
 
         <Button
           onClick={openFileDialog}
@@ -80,7 +99,9 @@ export default function UploadControl({ setOriginalVideo }: { setOriginalVideo: 
         </Button>
       </div>
 
-      <p className="mt-6 text-sm text-muted-foreground">Formatos soportados: .MP4, .MOV. Tamaño máximo: 2GB</p>
+      <p className="mt-6 text-sm text-muted-foreground">
+        Formatos soportados: MP4, MOV, AVI. Tamaño máximo: {MAX_VIDEO_SIZE_MB} MB
+      </p>
     </div>
   )
 }
